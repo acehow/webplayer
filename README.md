@@ -22,3 +22,6 @@ default use port 80, you can use custom port, for exemple run command [player -1
 
 7.使用了go1.16的embed特性嵌入了html和js文件，如需自行编译请确认go版本为1.16以上
 use new feather [embed] in go1.16 version. if you want to compile, make sure the go version is 1.16 or later.
+
+8.前端播放器使用了artplayer，git地址如下https://github.com/zhw2590582/ArtPlayer
+the player on the frontside use artplayer. git: https://github.com/zhw2590582/ArtPlayer
