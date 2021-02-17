@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Movie</title>
+  <script src="/e/artplayer.js"></script>
+  <script src="/e/jquery-3.5.1.min.js"></script>
+  <style>
+    .artplayer-app {
+      width: 640px;
+      height: 480px;
+    }
+  </style>
+</head>
+<body>
+<input onclick="selmovie()" type="button" value="Play"><select id="selectlist"></select>
+<div class="artplayer-app" id="divplayer"></div>
+
+<script>
+  var art;
+  let liststr="";
+  $.ajax({
+    type: "GET",
+    url: "/list",
+    async:false
+  }).done(function(msg) {
+    var fis=msg.toString().split(",");
+    for(i=0;i<fis.length;i++){
+      if(fis[i]!=""){
+        var showtmp=fis[i];
+        var li=showtmp.lastIndexOf("/");
+        if(li>0){
+          showtmp=showtmp.substring(li+1);
+        }
+        document.getElementById("selectlist").options.add(new Option(showtmp,fis[i]));
+      }
+    }
+  });
+
+  function selmovie(){
+    var m=document.getElementById("selectlist").value;
+
+    if(typeof(art)!='undefined'){
+      art.destroy();
+    }
+    art = new Artplayer({
+      container: '.artplayer-app',
+      url: m,
+      volume: 0.5,
+      muted: false,
+      autoplay: false,
+      pip: true,
+      autoSize: true,
+      screenshot: true,
+      setting: true,
+      loop: false,
+      playbackRate: true,
+      aspectRatio: true,
+      fullscreen: true,
+      fullscreenWeb: true,
+      mutex: true,
+      theme: '#ffad00',
+      lang: 'zh-cn'
+    });
+
+  }
+
+
+</script>
+
+</body>
+</html>
