@@ -19,3 +19,6 @@ only support mp4 format videos
 
 6.默认为80端口,直接输入ip回车即可, 也可使用自定义端口, 如在第3步运行命令player -12345使用12345端口, 浏览器打开时用ip:12345浏览
 default use port 80, you can use custom port, for exemple run command [player -12345] use port 12345 in step 3, then use ip:12345 address in web browser
+
+7.使用了go1.16的embed特性嵌入了html和js文件，如需自行编译请确认go版本为1.16以上
+use new feather [embed] in go1.16 version. if you want to compile, make sure the go version is 1.16 or later.
